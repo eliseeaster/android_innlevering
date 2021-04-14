@@ -18,8 +18,21 @@ class HomeActivity : AppCompatActivity() {
 
         recyclerView_home.layoutManager = LinearLayoutManager(this)
         recyclerView_home.adapter = MainAdapter()
+
+        fetchJson()
+    }
+
+    fun fetchJson() {
+        println("HALLO KAN DU HØRE MEG")
+
+        val url =
+            "https://api.letsbuildthatapp.com/youtube/home_feed?fbclid=IwAR1n92330MN9bpRG_y2n00wQ7ZOtGB58PectDv9xrZMUpS_WnHbfJvc5738"
+
+        var client = OkH
     }
 }
+
+
 
         /*
 
