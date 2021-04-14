@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-
+/*
 //ViewHolder representerer en enkelt rad i listen. Den refererer til ImageView og TextViews ved hjelp av ID.
 
 class ExampleAdapter(private val exampleList: List<ExampleItem>) : RecyclerView.Adapter<ExampleAdapter.ExampleViewHolder>(){
@@ -39,3 +39,4 @@ class ExampleAdapter(private val exampleList: List<ExampleItem>) : RecyclerView.
         val textView2: TextView = itemView.findViewById(R.id.text_view_2)
     }
 }
+*/

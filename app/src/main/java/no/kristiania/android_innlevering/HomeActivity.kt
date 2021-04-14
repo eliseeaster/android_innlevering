@@ -1,15 +1,27 @@
 package no.kristiania.android_innlevering
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_home.*
 
 
+
+
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+  //      recyclerView_home.setBackgroundColor(Color.BLUE);
+
+        recyclerView_home.layoutManager = LinearLayoutManager(this)
+        recyclerView_home.adapter = MainAdapter()
+    }
+}
+
+        /*
 
         val exampleList = generateDummyList(500)
 
@@ -34,4 +46,4 @@ class HomeActivity : AppCompatActivity() {
         }
         return list
     }
-}
+}*/
