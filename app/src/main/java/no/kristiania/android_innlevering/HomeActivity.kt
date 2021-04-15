@@ -4,9 +4,10 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_home.*
-
-
+import okhttp3.*
+import java.io.IOException
 
 
 class HomeActivity : AppCompatActivity() {
@@ -17,7 +18,7 @@ class HomeActivity : AppCompatActivity() {
   //      recyclerView_home.setBackgroundColor(Color.BLUE);
 
         recyclerView_home.layoutManager = LinearLayoutManager(this)
-        recyclerView_home.adapter = MainAdapter()
+ //       recyclerView_home.adapter = MainAdapter()
 
         fetchJson()
     }
@@ -26,11 +27,38 @@ class HomeActivity : AppCompatActivity() {
         println("HALLO KAN DU HØRE MEG")
 
         val url =
-            "https://api.letsbuildthatapp.com/youtube/home_feed?fbclid=IwAR1n92330MN9bpRG_y2n00wQ7ZOtGB58PectDv9xrZMUpS_WnHbfJvc5738"
+            "https://api.coincap.io/v2/assets"
 
-        var client = OkH
+        val request = Request.Builder().url(url).build()
+
+        var client = OkHttpClient()
+        client.newCall(request).enqueue(object: Callback {
+            override fun onResponse(call: Call, response: Response) {
+                val body = response?.body?.string()
+                println(body)
+
+                val gson = GsonBuilder().create()
+
+                val homeFeed = gson.fromJson(body, HomeFeed::class.java)
+
+                runOnUiThread{
+                    recyclerView_home.adapter = MainAdapter(homeFeed)
+                }
+
+            }
+            override fun onFailure(call: Call, e: IOException) {
+                println("Failed")
+            }
+
+        })
     }
 }
+
+class HomeFeed(val data: List<Data>)
+
+class Data(val id: String, val name: String, val symbol: String, val priceUsd: Double, val changePercent24Hr: Double)
+
+//name, symbol, recent value in dollars and negative or positive percentage change in the last 24 hours.
 
 
 
