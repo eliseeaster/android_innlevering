@@ -1,5 +1,6 @@
 package no.kristiania.android_innlevering
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
@@ -17,7 +18,8 @@ class PortfolioActivity : AppCompatActivity() {
         // set on-click listener
         btn_click_me.setOnClickListener {
             // your code to perform when the user clicks on the button
-            Toast.makeText(this@PortfolioActivity, "You clicked me.", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this@PortfolioActivity, TransactionsActivity::class.java)
+            startActivity(intent)
         }
 
     }

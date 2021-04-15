@@ -1,8 +1,11 @@
 package no.kristiania.android_innlevering
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_home.*
@@ -21,7 +24,17 @@ class HomeActivity : AppCompatActivity() {
  //       recyclerView_home.adapter = MainAdapter()
 
         fetchJson()
+
+        // get reference to button
+        val btn_click_me = findViewById(R.id.button_home) as Button
+        // set on-click listener
+        btn_click_me.setOnClickListener {
+            // your code to perform when the user clicks on the button
+            val intent = Intent(this@HomeActivity, PortfolioActivity::class.java)
+            startActivity(intent)
+        }
     }
+
 
     fun fetchJson() {
         println("HALLO KAN DU HØRE MEG")
