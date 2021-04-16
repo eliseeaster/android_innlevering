@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.video_row.view.*
 
 class MainAdapter(val homeFeed: HomeFeed): RecyclerView.Adapter<CustomViewHolder>(){
@@ -23,6 +24,13 @@ class MainAdapter(val homeFeed: HomeFeed): RecyclerView.Adapter<CustomViewHolder
  //       val videoTitle = videoTitles.get(position)
         val data = homeFeed.data.get(position)
         holder?.view?.textView_video_title?.text = data.name
+
+        holder?.view?.textView_symbol?.text = data.symbol
+        holder?.view?.textView_value?.text = data.priceUsd.toString()
+        holder?.view?.textView_percentage.text = ("" + data.changePercent24Hr + "%")
+        val icon = holder?.view?.textView_icon
+        val path = "https://static.coincap.io/assets/icons/" + data.symbol.toLowerCase() + "@2x.png"
+        Picasso.get().load(path).into(icon);
 
     }
 }

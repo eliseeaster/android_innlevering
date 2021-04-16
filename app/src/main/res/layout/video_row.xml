@@ -4,60 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="116dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/star" />
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/textView_video_title"
         android:layout_width="100dp"
         android:layout_height="18dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintStart_toEndOf="@+id/textView_icon"
+        tools:layout_editor_absoluteY="48dp" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/textView_icon"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:srcCompat="@drawable/ic_android" />
+        app:srcCompat="@drawable/ic_android"
+        tools:layout_editor_absoluteY="48dp" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/textView_symbol"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="A"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/textView_icon"
         app:layout_constraintTop_toBottomOf="@+id/textView_video_title" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/textView_value"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:text="B"
         app:layout_constraintStart_toEndOf="@+id/textView_video_title"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        tools:layout_editor_absoluteY="52dp" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/textView_percentage"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="4dp"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/textView15"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintStart_toEndOf="@+id/textView_value"
+        app:layout_constraintTop_toTopOf="@+id/textView_value" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
