@@ -21,6 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".PortfolioActivity" android:label="Portfolio"/>
+
         <activity android:name=".TransactionsActivity" android:label="Transactions"/>
+
     </application>
 </manifest>
