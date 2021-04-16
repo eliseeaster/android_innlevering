@@ -25,14 +25,6 @@ class HomeActivity : AppCompatActivity() {
 
         fetchJson()
 
-        // BUTTON TO PAGE 3
-        val btn_click_me = findViewById(R.id.button_home) as Button
-        // set on-click listener
-        btn_click_me.setOnClickListener {
-            // your code to perform when the user clicks on the button
-            val intent = Intent(this@HomeActivity, PortfolioActivity::class.java)
-            startActivity(intent)
-        }
 
     }
 
