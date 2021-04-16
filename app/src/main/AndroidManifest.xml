@@ -11,8 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_innlevering">
+        <!-- SPLASH Screen -->
         <activity android:name=".HomeActivity"
             android:label="Home"/>
+
+        <!-- Page 2 -->
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +23,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+        <!-- Page 3 -->
+        <activity android:name=".PortfolioActivity" android:label="Portfolio"/>
+
+        <!-- Page 4 -->
+        <activity android:name=".CCInfoActivity" android:label="Crypto Currency Information"/>
+
+        <!-- Page 5 -->
+        <activity android:name=".BuyCCActivity" android:label="Buy Crypto Currency"/>
+
+        <!-- Page 6 -->
+        <activity android:name=".SellCCActivity" android:label="Sell Crypto Currency"/>
+
+        <!-- Page 7 -->
+        <activity android:name=".TransactionsActivity" android:label="Transactions"/>
+
+    </application>
 </manifest>
