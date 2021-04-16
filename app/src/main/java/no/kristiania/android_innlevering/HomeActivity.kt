@@ -54,37 +54,4 @@ class HomeActivity : AppCompatActivity() {
     }
 }
 
-class HomeFeed(val data: List<Data>)
 
-class Data(val id: String, val name: String, val symbol: String, val priceUsd: Double, val changePercent24Hr: Double)
-
-//name, symbol, recent value in dollars and negative or positive percentage change in the last 24 hours.
-
-
-
-        /*
-
-        val exampleList = generateDummyList(500)
-
-        //brukt plugin under gradle module filen for å få dette til å funke
-        recycler_view.adapter = ExampleAdapter(exampleList)
-        recycler_view.layoutManager = LinearLayoutManager(this)
-        recycler_view.setHasFixedSize(true)
-
-    }
-
-    private fun generateDummyList(size: Int): List<ExampleItem> {
-
-        val list = ArrayList<ExampleItem>()
-        for (i in 0 until size) {
-            val drawable = when (i % 3) {
-                0 -> R.drawable.ic_android
-                1 -> R.drawable.mane
-                else -> R.drawable.star
-            }
-            val item = ExampleItem(drawable, "Item $i", "Line 2")
-            list += item
-        }
-        return list
-    }
-}*/
