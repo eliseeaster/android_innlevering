@@ -34,13 +34,26 @@ class MainAdapter(val homeFeed: HomeFeed): RecyclerView.Adapter<CustomViewHolder
         val path = "https://static.coincap.io/assets/icons/" + data.symbol.toLowerCase() + "@2x.png"
         Picasso.get().load(path).into(icon);
 
+        holder?.data = data
+
     }
 }
 
-class CustomViewHolder(val view: View): RecyclerView.ViewHolder(view){
+class CustomViewHolder(val view: View, var data: Data? = null): RecyclerView.ViewHolder(view){
+
+    companion object {
+        val RECENT_RATES_KEY = "RECENT_RATES"
+    }
+
     init {
         view.setOnClickListener {
             val intent = Intent(view.context, PortfolioActivity::class.java)
+
+
+            val stringPrice = data?.priceUsd.toString()
+
+            intent.putExtra(RECENT_RATES_KEY, stringPrice)
+
             view.context.startActivity(intent)
         }
         }

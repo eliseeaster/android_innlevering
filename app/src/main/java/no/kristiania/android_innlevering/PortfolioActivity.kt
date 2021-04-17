@@ -7,12 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_portfolio.*
+import kotlinx.android.synthetic.main.portfolio_row.*
+import kotlinx.android.synthetic.main.portfolio_row.view.*
+import kotlinx.android.synthetic.main.video_row.view.*
+import okhttp3.*
+import java.io.IOException
 
 //SCREEN 3
 
@@ -22,7 +29,22 @@ class PortfolioActivity : AppCompatActivity() {
         setContentView(R.layout.activity_portfolio)
 
         rvPortfolio.layoutManager = LinearLayoutManager(this)
-        rvPortfolio.adapter = PortfolioAdapter()
+
+
+        //TRYING TO CHANGE THE VALUE-TXT...
+        val valueRecentRates = intent.getStringExtra("RECENT_RATES")
+
+        if (valueRecentRates != null) {
+          rvPortfolio.adapter = PortfolioAdapter(valueRecentRates)
+        }
+
+
+        val textView5 = findViewById<TextView>(R.id.textView)
+        textView5.text = valueRecentRates
+
+
+
+
 
         // TRANSACTION-BUTTON (GOES TO PAGE 7)
         val btn_click_me = findViewById(R.id.btn_transactions) as Button
@@ -31,27 +53,53 @@ class PortfolioActivity : AppCompatActivity() {
             val intent = Intent(this@PortfolioActivity, TransactionsActivity::class.java)
             startActivity(intent)
         }
+
+        //fetchJSON()
+
+
+    }
+/*
+    private fun fetchJSON() {
+        val videoId = intent.getIntExtra(CustomViewHolder.RECENT_RATES_KEY, -1)
+        val url = ""
+        val client = OkHttpClient()
+        val request = Request.Builder().url(courseDetailUrl).build()
+        client.newCall(request).enqueue(object: Callback {
+
+            override fun onFailure(call: Call, e: IOException) {
+                println("Failed")
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                val body = response.body?.string()
+
+                val gson = GsonBuilder().create()
+
+                val currencies = gson.fromJson(body, Array<Data>::class.java)
+            }
+        })
+
     }
 
-    private class PortfolioAdapter: RecyclerView.Adapter<PortfolioViewHolder>() {
+ */
+
+        private class PortfolioAdapter(val rates: String): RecyclerView.Adapter<PortfolioViewHolder>() {
         //HOW MANY ITEMS IN OUR LIST
         override fun getItemCount(): Int {
-            return 5
+            return 3
         }
         //WHAT THE VIEW LOOKS LIKE
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PortfolioViewHolder {
+                // how do we even create a view
 
             val layoutInflater = LayoutInflater.from(parent.context)
             val customView = layoutInflater.inflate(R.layout.portfolio_row, parent, false)
-
-            /*val blueView = View(parent?.context)
-            blueView.setBackgroundColor(Color.BLUE)
-            blueView.minimumHeight = 50*/
             return PortfolioViewHolder(customView)
         }
 
         override fun onBindViewHolder(holder: PortfolioViewHolder, position: Int) {
-
+            println(rates)
+            holder.customView.textView5?.text = rates
         }
     }
 
