@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.list.ListFragment">
-    <?xml version="1.0" encoding="utf-8"?>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
@@ -76,7 +75,7 @@
         tools:layout_editor_absoluteY="272dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="rv_list"
+        android:id="@+id/rv_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
