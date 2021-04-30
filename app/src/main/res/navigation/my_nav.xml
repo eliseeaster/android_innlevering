@@ -11,7 +11,7 @@
         tools:layout="@layout/fragment_buy_currency" >
         <action
             android:id="@+id/action_buyCurrencyFragment_to_listFragment3"
-            app:destination="@id/listFragment3" />
+            app:destination="@id/listFragment" />
     </fragment>
     <fragment
         android:id="@+id/sellCurrencyFragment"
@@ -20,10 +20,10 @@
         tools:layout="@layout/fragment_sell_currency" >
         <action
             android:id="@+id/action_sellCurrencyFragment_to_listFragment3"
-            app:destination="@id/listFragment3" />
+            app:destination="@id/listFragment" />
     </fragment>
     <fragment
-        android:id="@+id/listFragment3"
+        android:id="@+id/listFragment"
         android:name="no.kristiania.android_innlevering.fragments.list.ListFragment"
         android:label="fragment_list"
         tools:layout="@layout/fragment_list" >
