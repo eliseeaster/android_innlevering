@@ -122,7 +122,7 @@
         android:layout_height="99dp"
         android:text="You can only buy cryptocurrensy in USD.
 
-You have (insert amount) USD"
+You have (insert amount) USD dollars"
         android:textSize="18sp"
         tools:layout_editor_absoluteX="71dp"
         tools:layout_editor_absoluteY="551dp" />
