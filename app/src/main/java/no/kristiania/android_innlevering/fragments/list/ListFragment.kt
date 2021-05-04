@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_list.view.*
 import no.kristiania.android_innlevering.R
 
@@ -20,8 +20,13 @@ class ListFragment : Fragment(){
         val view = inflater.inflate(R.layout.fragment_list, container, false)
 
         view.buyPage_btn.setOnClickListener {
+            findNavController().navigate(R.id.action_listFragment_to_buyFragment);
 
-            FragmentTransaction t = getSupp
+        }
+
+        view.sellPage_btn.setOnClickListener{
+            findNavController().navigate(R.id.action_listFragment_to_sellFragment);
+
         }
         return view
 

@@ -10,13 +10,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.fragment_buy_currency.*
+import kotlinx.android.synthetic.main.fragment_buy.*
 import kotlinx.android.synthetic.main.fragment_list.view.*
 import no.kristiania.android_innlevering.R
 import no.kristiania.android_innlevering.data.User
 import no.kristiania.android_innlevering.data.UserViewModel
 
-class BuyCurrencyFragment : Fragment() {
+class BuyFragment : Fragment() {
 
     private lateinit var mUserViewModel: UserViewModel
 
@@ -26,14 +26,11 @@ class BuyCurrencyFragment : Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_buy_currency, container, false)
+        val view = inflater.inflate(R.layout.fragment_buy, container, false)
 
-       mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
-        view.buy_btn.setOnClickListener{
-            insertDataToDatabase()
 
-        }
 
         return view
 
