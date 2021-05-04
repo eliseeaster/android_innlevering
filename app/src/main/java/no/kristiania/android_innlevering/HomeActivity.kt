@@ -10,6 +10,9 @@ import java.io.IOException
 
 
 class HomeActivity : AppCompatActivity() {
+    private val userViewModel: UserViewModel by viewModels {
+        UserViewModelFactory((application as UsersApplication).repository)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -21,9 +24,6 @@ class HomeActivity : AppCompatActivity() {
 
 
     }
-
-
-
 
     fun fetchJson() {
 
