@@ -14,8 +14,6 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-  //      recyclerView_home.setBackgroundColor(Color.BLUE);
-
         recyclerView_home.layoutManager = LinearLayoutManager(this)
  //       recyclerView_home.adapter = MainAdapter()
 

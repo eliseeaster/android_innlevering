@@ -4,8 +4,6 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.video_row.view.*
@@ -44,6 +42,7 @@ class CustomViewHolder(val view: View, var data: Data? = null): RecyclerView.Vie
 
     companion object {
         val RECENT_RATES_KEY = "RECENT_RATES"
+
     }
 
     init {

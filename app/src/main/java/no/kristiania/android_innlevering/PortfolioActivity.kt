@@ -1,6 +1,5 @@
 package no.kristiania.android_innlevering
 
-import AppDatabase
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +10,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.room.Room
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_portfolio.*
 import kotlinx.android.synthetic.main.portfolio_row.*
@@ -42,10 +40,10 @@ class PortfolioActivity : AppCompatActivity() {
         textView5.text = valueRecentRates
 
         //TRYING TO GET DATABASE
-        val db = Room.databaseBuilder(
+        /*val db = Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java, "user_database_name"
-        ).build()
+        ).build()*/
 /*
         val userDao = db.userDao()
         val users: List<User> = userDao.getAll()

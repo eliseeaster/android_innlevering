@@ -1,4 +1,4 @@
-/*package no.kristiania.android_innlevering.fragments.buy
+package no.kristiania.android_innlevering.fragments.buy/*package no.kristiania.android_innlevering.fragments.buy
 
 import android.os.Bundle
 import android.text.Editable

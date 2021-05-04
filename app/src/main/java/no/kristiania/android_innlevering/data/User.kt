@@ -9,5 +9,5 @@ import androidx.room.PrimaryKey
 data class User(
     @PrimaryKey val uid: Int,
     @ColumnInfo(name = "user_points") val userPoints: Int?,
-    @ColumnInfo(name = "user_owned_currency") val userOwnedCurrency: String?
+    @ColumnInfo(name = "user_owned_currency") val userOwnedCurrencies: String?
 )
