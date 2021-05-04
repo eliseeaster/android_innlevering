@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.video_row.view.*
@@ -48,12 +49,8 @@ class CustomViewHolder(val view: View, var data: Data? = null): RecyclerView.Vie
     init {
         view.setOnClickListener {
             val intent = Intent(view.context, PortfolioActivity::class.java)
-
-
             val stringPrice = data?.priceUsd.toString()
-
             intent.putExtra(RECENT_RATES_KEY, stringPrice)
-
             view.context.startActivity(intent)
         }
         }
