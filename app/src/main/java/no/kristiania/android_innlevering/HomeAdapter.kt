@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.video_row.view.*
 
-class MainAdapter(val homeFeed: HomeFeed): RecyclerView.Adapter<CustomViewHolder>(){
+class HomeAdapter(val homeFeed: HomeFeed): RecyclerView.Adapter<CustomViewHolder>(){
 
     override fun getItemCount(): Int {
         return homeFeed.data.count()

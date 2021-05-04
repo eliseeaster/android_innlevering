@@ -4,17 +4,18 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface UserDao {
     @Query("SELECT * FROM user")
-    fun getAll(): Flow<List<User>>
+    fun getAll(): List<User>
+
+    @Query("SELECT * FROM user where uid = :uid ")
+    fun getOne(uid: Int): User
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addUser(user: User)
+    fun addUser(user: User)
 
-    @Query("DELETE FROM user")
-    suspend fun deleteAll()
-
+    @Query("DELETE FROM user where uid = :uid")
+    fun delete(uid: Int)
 }
