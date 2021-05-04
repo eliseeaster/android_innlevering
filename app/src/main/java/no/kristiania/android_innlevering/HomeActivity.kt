@@ -1,20 +1,38 @@
 package no.kristiania.android_innlevering
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_home.*
-import no.kristiania.android_innlevering.data.UserViewModel
-import no.kristiania.android_innlevering.data.UserViewModelFactory
+import no.kristiania.android_innlevering.data.User
+import no.kristiania.android_innlevering.data.UserDatabase
 import okhttp3.*
 import java.io.IOException
 
 
-class HomeActivity : AppCompatActivity() {
-    private val userViewModel: UserViewModel by viewModels {
-        UserViewModelFactory((application as UserApplication).repository)
+class HomeActivity : AppCompatActivity()
+{
+    private var users = mutableListOf<User>()
+
+    fun getAll(db: UserDatabase){
+        Thread {
+            val allUsers = db.userDao().getAll()
+            allUsers.forEach(){
+                users.add(it)
+            }
+        }.start()
+        Thread.sleep(100)
+    }
+
+    fun populateDatabase(db: UserDatabase){
+        val user = User(1, 0, "Bitcoin")
+        val user2 = User(2, 50, "Dogecoin")
+        Thread {
+            db.userDao().addUser(user)
+            db.userDao().addUser(user2)
+        }.start()
+        Thread.sleep(100)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,23 +41,23 @@ class HomeActivity : AppCompatActivity() {
 
         //      recyclerView_home.setBackgroundColor(Color.BLUE);
 
-        val adapter = HomeAdapter()
         recyclerView_home.layoutManager = LinearLayoutManager(this)
         //       recyclerView_home.adapter = MainAdapter()
 
 
+        val db = UserDatabase(this)
+
+
+        populateDatabase(db)
         fetchJson()
-
-        userViewModel.readAllData.observe(owner = this) {
-                users -> users.let {adapter.submitList(it)}
+        println("\n\n--------------ALL USERS IN DB-------------- \n\n")
+        getAll(db)
+        users.forEach{
+            println("user outside of thread: $it")
         }
-
     }
 
-
-
     fun fetchJson() {
-
         val url =
             "https://api.coincap.io/v2/assets"
 
@@ -56,19 +74,12 @@ class HomeActivity : AppCompatActivity() {
                 runOnUiThread{
                     recyclerView_home.adapter = HomeAdapter(homeFeed)
                 }
-
-
             }
             override fun onFailure(call: Call, e: IOException) {
                 println("Failed")
             }
-
         })
-
-        }
-
     }
-
-
+}
 
 

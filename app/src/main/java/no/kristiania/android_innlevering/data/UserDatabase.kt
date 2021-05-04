@@ -1,40 +1,26 @@
-
+package no.kristiania.android_innlevering.data
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room.databaseBuilder
 import androidx.room.RoomDatabase
-import androidx.sqlite.db.SupportSQLiteDatabase
-import kotlinx.coroutines.CoroutineScope
-import no.kristiania.android_innlevering.data.User
-import no.kristiania.android_innlevering.data.UserDao
 
-
-@Database(entities = [User::class], version = 1)
+@Database(entities = [User::class], version = 1, exportSchema = false)
 abstract class UserDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
 
     companion object {
+        @Volatile
+        private var instance: UserDatabase? = null
 
-        @Volatile private var instance: UserDatabase? = null
-
-        fun getInstance(context: Context, scope: CoroutineScope): UserDatabase {
+        operator fun invoke(context: Context): UserDatabase {
             return instance ?: synchronized(this) {
-                instance ?: buildDatabase(context, scope).also { instance = it }
-    }
-
-}
-        private fun buildDatabase(context: Context, scope: CoroutineScope): UserDatabase {
-            return databaseBuilder(context, UserDatabase::class.java, "user")
-                .fallbackToDestructiveMigration().addCallback(UserDBCallback(scope)).build()
+                instance ?: buildDatabase(context).also { instance = it }
+            }
         }
-    }
 
-    private class UserDBCallback(
-        private val scope: CoroutineScope
-    ) : RoomDatabase.Callback() {
-
-        override fun onCreate(db: SupportSQLiteDatabase) {
-            super.onCreate(db)
+        private fun buildDatabase(context: Context): UserDatabase {
+            return databaseBuilder(context, UserDatabase::class.java, "user")
+                .fallbackToDestructiveMigration().build()
         }
     }
 }
