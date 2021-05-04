@@ -1,11 +1,7 @@
 package no.kristiania.android_innlevering
 
-import android.content.Intent
-import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_home.*
@@ -32,7 +28,6 @@ class HomeActivity : AppCompatActivity() {
 
 
     fun fetchJson() {
-        println("HALLO KAN DU HØRE MEG")
 
         val url =
             "https://api.coincap.io/v2/assets"
@@ -43,8 +38,6 @@ class HomeActivity : AppCompatActivity() {
         client.newCall(request).enqueue(object: Callback {
             override fun onResponse(call: Call, response: Response) {
                 val body = response?.body?.string()
-                println(body)
-
                 val gson = GsonBuilder().create()
 
                 val homeFeed = gson.fromJson(body, HomeFeed::class.java)

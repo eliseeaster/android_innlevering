@@ -1,4 +1,4 @@
-package no.kristiania.android_innlevering.data
+/*package no.kristiania.android_innlevering.data
 
 import androidx.lifecycle.LiveData
 
@@ -10,4 +10,4 @@ class UserRepository(private val userDao: UserDao){
         userDao.addUser(user)
     }
 
-}
+}*/

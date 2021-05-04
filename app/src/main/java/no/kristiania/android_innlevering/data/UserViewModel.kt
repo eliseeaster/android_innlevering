@@ -1,4 +1,4 @@
-package no.kristiania.android_innlevering.data
+/*package no.kristiania.android_innlevering.data
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -23,4 +23,4 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
             repository.addUser(user)
         }
     }
-}
+}*/

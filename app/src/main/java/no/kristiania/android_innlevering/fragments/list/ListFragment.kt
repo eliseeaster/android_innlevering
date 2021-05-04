@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import kotlinx.android.synthetic.main.fragment_list.view.*
 import no.kristiania.android_innlevering.R
 
@@ -21,7 +20,6 @@ class ListFragment : Fragment(){
 
         view.buyPage_btn.setOnClickListener {
 
-            FragmentTransaction t = getSupp
         }
         return view
 

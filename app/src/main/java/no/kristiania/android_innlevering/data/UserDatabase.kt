@@ -1,33 +1,9 @@
-package no.kristiania.android_innlevering.data
-
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
+import no.kristiania.android_innlevering.data.User
+import no.kristiania.android_innlevering.data.UserDao
 
-@Database(entities = [User::class], version = 1, exportSchema = false)
-abstract class UserDatabase: RoomDatabase() {
-
+@Database(entities = arrayOf(User::class), version = 1)
+abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
-    companion object {
-        @Volatile
-        private var INSTANCE: UserDatabase? = null
-
-        fun getDatabase(context: Context): UserDatabase{
-            val tempInstance = INSTANCE
-            if(tempInstance != null){
-               return tempInstance
-            }
-            synchronized(this){
-                val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    UserDatabase::class.java,
-                    "user_database"
-                ).build()
-                INSTANCE = instance
-                return instance
-            }
-        }
-    }
-
 }
