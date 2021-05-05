@@ -4,6 +4,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
 import android.widget.Button
+import android.widget.TextView
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_ccinfo.view.*
+import kotlinx.android.synthetic.main.crypto_row.view.*
+import no.kristiania.android_innlevering.data.CurrencyDatabase
 
 
 //PAGE 4 - CRYPTO CURRENCY INFORMATION
@@ -16,10 +21,34 @@ Hint button.isEnabled = false | true
 */
 
 
-class CCInfoActivity : AppCompatActivity() {
+class CCInfoActivity() : AppCompatActivity() {
+
+    private var availableCurrency: Double = 0.0
+    private var availableUsd: Double = 0.0
+    private var result: Double = 0.0
+    private var isCurrencyExistAlready: Boolean = false
+    private var symbol: String = ""
+    private var name: String = ""
+    private var priceUsd: String = ""
+    private var id: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ccinfo)
+
+        val receivedIntent = intent
+        name = receivedIntent.getStringExtra("name").toString()
+        symbol = receivedIntent.getStringExtra("symbol").toString()
+        priceUsd = receivedIntent.getStringExtra("priceUsd").toString()
+        id = receivedIntent.getStringExtra("id").toString()
+
+        getDataFromDb(symbol)
+
+        Thread.sleep(100)
+
+        val textView: TextView = findViewById(R.id.crypto_name) as TextView
+        textView.text = name;
 
         val btn_start_buy = findViewById(R.id.buy_btn) as Button
         btn_start_buy.setOnClickListener{
@@ -32,7 +61,20 @@ class CCInfoActivity : AppCompatActivity() {
             val intent = Intent(this@CCInfoActivity, SellCCActivity::class.java)
             startActivity(intent);
         }
-
-
     }
+
+    fun getDataFromDb(symbol: String, usdSymbol: String = "USD") {
+        Thread {
+            availableCurrency = CurrencyDatabase(applicationContext).CurrenciesDao().getVolume(symbol)
+            availableUsd = CurrencyDatabase(applicationContext).CurrenciesDao().getVolume(usdSymbol)
+            isCurrencyExistAlready = CurrencyDatabase(applicationContext).CurrenciesDao().isCurrencyExistAlready(symbol)
+        }.start()
+    }
+
+    override fun onResume(){
+        super.onResume()
+        getDataFromDb(symbol)
+
+        }
+
 }

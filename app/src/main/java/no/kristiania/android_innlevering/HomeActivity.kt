@@ -17,15 +17,10 @@ import java.util.*
 class HomeActivity : AppCompatActivity()
 {
     private var currencies = mutableListOf<Currencies>()
-    private lateinit var binding: ActivityHomeBinding
-    private var priceData = HashMap<String, Double>()
-    private var currenciesList = mutableListOf<Currency>()
-    private var availableUSD: Double = 0.0
-    private var totalCurrencies: Double = 0.0
 
     fun getAll(db: CurrencyDatabase){
         Thread {
-            val allCurrencies = db.CurrenciesDao().getAll()
+            val allCurrencies = db.CurrenciesDao().getAllCurrencies("BTC")
             allCurrencies.forEach(){
                 currencies.add(it)
             }
@@ -34,9 +29,11 @@ class HomeActivity : AppCompatActivity()
     }
 
     fun populateDatabase(db: CurrencyDatabase){
-        val currency1 = Currencies("", 1, "2")
+        val currency1 = Currencies("BTC", 0.1, 1.4)
+        val currency2 =Currencies("Etherium", 50.2, 4.2)
         Thread {
-            db.CurrenciesDao().addCurrency(currency)
+            db.CurrenciesDao().addCurrencies(currency1)
+            db.CurrenciesDao().addCurrencies(currency2)
         }.start()
         Thread.sleep(100)
     }
@@ -45,20 +42,25 @@ class HomeActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        //USER POINTS BTN - LEADS TO PORTFOLIO
         val btn_user_points = findViewById(R.id.btn_user_points) as Button
         btn_user_points.setOnClickListener{
             val intent = Intent(this@HomeActivity, PortfolioActivity::class.java)
-            startActivity(intent);
         }
+        //      recyclerView_home.setBackgroundColor(Color.BLUE);
 
         recyclerView_home.layoutManager = LinearLayoutManager(this)
+        //       recyclerView_home.adapter = MainAdapter()
+
 
         val db = CurrencyDatabase(this)
 
 
         populateDatabase(db)
         fetchJson()
+        println("\n\n--------------ALL USERS IN DB-------------- \n\n")
+        println("\n\n--------------ALL USERS IN DB-------------- \n\n")
+        println("\n\n--------------ALL USERS IN DB-------------- \n\n")
+        println("\n\n--------------ALL USERS IN DB-------------- \n\n")
         println("\n\n--------------ALL USERS IN DB-------------- \n\n")
         getAll(db)
         currencies.forEach{

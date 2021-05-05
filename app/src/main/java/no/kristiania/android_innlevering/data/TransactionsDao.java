@@ -1,5 +1,5 @@
 package no.kristiania.android_innlevering.data;
-
+/*
 import androidx.room.*
 
 @Dao
@@ -12,3 +12,4 @@ interface TransactionsDao {
     fun fetchTransactions(): MutableList<Transactions>
 
 }
+*/

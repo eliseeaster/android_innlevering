@@ -52,7 +52,8 @@ class CustomViewHolder(val view: View, var data: Data? = null): RecyclerView.Vie
             val stringPrice = data?.priceUsd.toString()
             intent.putExtra(RECENT_RATES_KEY, stringPrice)
             view.context.startActivity(intent)
-        }
+
+            }
         }
 
 

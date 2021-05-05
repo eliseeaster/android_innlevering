@@ -21,6 +21,11 @@ interface CurrenciesDao {
     @Query("SELECT * FROM currency_table WHERE currency_symbol!=(SELECT currency_symbol FROM currency_table WHERE currency_symbol =:currencySymbol)")
     fun getAllCurrencies(currencySymbol: String): MutableList<Currencies>
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun addCurrencies(currencies: Currencies)
+
+    @Query("SELECT count(*)!=0 FROM currency_table WHERE currency_symbol = :currencySymbol ")
+    fun isCurrencyExistAlready(currencySymbol: String): Boolean
 
 
     /*

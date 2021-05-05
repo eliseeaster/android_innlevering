@@ -1,5 +1,5 @@
 package no.kristiania.android_innlevering.data;
-
+/*
 //ALL THE DATA WE WANT FROM THE API
 public class Data {
 
@@ -10,3 +10,4 @@ public class Data {
     val changePercent24Hr: String?
 
 }
+*/
