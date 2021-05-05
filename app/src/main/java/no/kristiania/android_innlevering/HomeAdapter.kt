@@ -4,6 +4,8 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.crypto_row.view.*
@@ -46,10 +48,23 @@ class CustomViewHolder(val view: View, var data: Data? = null): RecyclerView.Vie
 
     init {
         view.setOnClickListener {
-            val intent = Intent(view.context, PortfolioActivity::class.java)
+            val intent = Intent(view.context, CCInfoActivity::class.java)
             val stringPrice = data?.priceUsd.toString()
             intent.putExtra(RECENT_RATES_KEY, stringPrice)
             view.context.startActivity(intent)
         }
         }
+    //
+
+    // USER-POINTS-BUTTON (GOES TO PAGE XX)
+    //val btn_user_points = findViewById(R.id.btn_user_points) as Button
+    // set on-click listener
+/*
+    init {
+        btn_user_points.setOnClickListener {
+            val intent = Intent(this, PortfolioActivity::class.java)
+            Intent(this@HomeActivity, TransactionsActivity::class.java)
+            startActivity(intent);*
+        }
+    }*/
     }

@@ -9,7 +9,7 @@
 
 
     <Button
-        android:id="@+id/btn_points"
+        android:id="@+id/btn_user_points"
         android:layout_width="412dp"
         android:layout_height="66dp"
         android:backgroundTint="@color/purple_700"

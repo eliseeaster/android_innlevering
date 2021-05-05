@@ -2,6 +2,9 @@ package no.kristiania.android_innlevering
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import android.widget.Button
+
 
 //PAGE 4 - CRYPTO CURRENCY INFORMATION
 /*
@@ -17,6 +20,19 @@ class CCInfoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ccinfo)
+
+        val btn_start_buy = findViewById(R.id.buy_btn) as Button
+        btn_start_buy.setOnClickListener{
+            val intent = Intent(this@CCInfoActivity, BuyCCActivity::class.java)
+            startActivity(intent)
+        }
+
+        val btn_start_sell = findViewById(R.id.sell_btn) as Button
+        btn_start_sell.setOnClickListener{
+            val intent = Intent(this@CCInfoActivity, SellCCActivity::class.java)
+            startActivity(intent);
+        }
+
 
     }
 }
