@@ -9,6 +9,8 @@ import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_home.*
 import no.kristiania.android_innlevering.data.Currencies
 import no.kristiania.android_innlevering.data.CurrencyDatabase
+import no.kristiania.android_innlevering.data.Homefeed
+import no.kristiania.android_innlevering.HomeAdapter
 import okhttp3.*
 import java.io.IOException
 import java.util.*
@@ -61,7 +63,6 @@ class HomeActivity : AppCompatActivity()
         println("\n\n--------------ALL USERS IN DB-------------- \n\n")
         println("\n\n--------------ALL USERS IN DB-------------- \n\n")
         println("\n\n--------------ALL USERS IN DB-------------- \n\n")
-        println("\n\n--------------ALL USERS IN DB-------------- \n\n")
         getAll(db)
         currencies.forEach{
             println("user outside of thread: $it")
@@ -80,10 +81,11 @@ class HomeActivity : AppCompatActivity()
                 val body = response?.body?.string()
                 val gson = GsonBuilder().create()
 
-                val homeFeed = gson.fromJson(body, HomeFeed::class.java)
+                val homeFeed = gson.fromJson(body, Homefeed::class.java)
 
                 runOnUiThread{
                     recyclerView_home.adapter = HomeAdapter(homeFeed)
+                    println(homeFeed)
                 }
             }
             override fun onFailure(call: Call, e: IOException) {
