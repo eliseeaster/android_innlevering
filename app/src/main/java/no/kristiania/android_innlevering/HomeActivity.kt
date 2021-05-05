@@ -37,7 +37,7 @@ class HomeActivity : AppCompatActivity()
     }
 
 
-    //POPULER DB MED 10.000 SOM I DEMS MAINACTIVITY
+    //POPULER DB MED 10.000 SOM I DEMS BUY
     fun populateDatabase(db: PortfolioDatabase){
         val currency1 = Portfolio("BTC", 0.1, 1.4)
         val currency2 =Portfolio("Etherium", 50.2, 4.2)

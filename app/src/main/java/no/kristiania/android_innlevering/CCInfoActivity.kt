@@ -27,7 +27,7 @@ class CCInfoActivity() : AppCompatActivity() {
     private var availableCurrency: Double = 0.0
     private var availableUsd: Double = 0.0
     private var result: Double = 0.0
-    private var isCurrencyExistAlready: Boolean = false
+    private var currencyAlreadyExist: Boolean = false
     private var symbol: String = ""
     private var name: String = ""
     private var priceUsd: String = ""
@@ -63,10 +63,11 @@ class CCInfoActivity() : AppCompatActivity() {
             startActivity(intent)
         }
 
+
         val btn_start_sell = findViewById(R.id.sell_btn) as Button
         btn_start_sell.setOnClickListener{
             val intent = Intent(this@CCInfoActivity, SellCCActivity::class.java)
-            startActivity(intent);
+            startActivity(intent)
         }
     }
 
@@ -74,7 +75,7 @@ class CCInfoActivity() : AppCompatActivity() {
         Thread {
             availableCurrency = PortfolioDatabase(applicationContext).PortfolioDao().getVolume(symbol)
             availableUsd = PortfolioDatabase(applicationContext).PortfolioDao().getVolume(usdSymbol)
-            isCurrencyExistAlready = PortfolioDatabase(applicationContext).PortfolioDao().isCurrencyExistAlready(symbol)
+            currencyAlreadyExist = PortfolioDatabase(applicationContext).PortfolioDao().currencyAlreadyExist(symbol)
         }.start()
     }
 

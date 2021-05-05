@@ -81,7 +81,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/addUSCurrency_et"
+        android:id="@+id/input_USD"
         android:layout_width="106dp"
         android:layout_height="71dp"
         android:layout_marginTop="44dp"
@@ -92,7 +92,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
     <EditText
-        android:id="@+id/editTextNumberDecimal"
+        android:id="@+id/inputCrypto"
         android:layout_width="106dp"
         android:layout_height="62dp"
         android:layout_marginEnd="72dp"

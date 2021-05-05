@@ -21,7 +21,7 @@ interface PortfolioDao {
     fun addCurrencies(portfolio: Portfolio)
 
     @Query("SELECT count(*)!=0 FROM currency_table WHERE currency_symbol = :currencySymbol ")
-    fun isCurrencyExistAlready(currencySymbol: String): Boolean
+    fun currencyAlreadyExist(currencySymbol: String): Boolean
 
 
     /*
