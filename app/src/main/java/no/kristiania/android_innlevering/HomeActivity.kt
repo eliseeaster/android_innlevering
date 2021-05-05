@@ -7,10 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_home.*
+import no.kristiania.android_innlevering.data.Portfolio
+import no.kristiania.android_innlevering.data.PortfolioDatabase
 import no.kristiania.android_innlevering.data.Currencies
-import no.kristiania.android_innlevering.data.CurrencyDatabase
-import no.kristiania.android_innlevering.data.Homefeed
-import no.kristiania.android_innlevering.HomeAdapter
 import no.kristiania.android_innlevering.data.Data
 import okhttp3.*
 import java.io.IOException
@@ -20,16 +19,16 @@ import java.util.*
 class HomeActivity : AppCompatActivity()
 
 {
-    private var currencies = mutableListOf<Currencies>()
+    private var currencies = mutableListOf<Portfolio>()
 
     companion object {
         var data = mutableListOf<Data>()
     }
 
-    fun getAll(db: CurrencyDatabase){
+    fun getAll(db: PortfolioDatabase){
 
         Thread {
-            val allCurrencies = db.CurrenciesDao().getAllCurrencies("BTC")
+            val allCurrencies = db.PortfolioDao().getAllCurrencies("BTC")
             allCurrencies.forEach(){
                 currencies.add(it)
             }
@@ -37,12 +36,14 @@ class HomeActivity : AppCompatActivity()
         Thread.sleep(100)
     }
 
-    fun populateDatabase(db: CurrencyDatabase){
-        val currency1 = Currencies("BTC", 0.1, 1.4)
-        val currency2 =Currencies("Etherium", 50.2, 4.2)
+
+    //POPULER DB MED 10.000 SOM I DEMS MAINACTIVITY
+    fun populateDatabase(db: PortfolioDatabase){
+        val currency1 = Portfolio("BTC", 0.1, 1.4)
+        val currency2 =Portfolio("Etherium", 50.2, 4.2)
         Thread {
-            db.CurrenciesDao().addCurrencies(currency1)
-            db.CurrenciesDao().addCurrencies(currency2)
+            db.PortfolioDao().addCurrencies(currency1)
+            db.PortfolioDao().addCurrencies(currency2)
         }.start()
         Thread.sleep(100)
     }
@@ -54,6 +55,7 @@ class HomeActivity : AppCompatActivity()
         val btn_user_points = findViewById(R.id.btn_user_points) as Button
         btn_user_points.setOnClickListener{
             val intent = Intent(this@HomeActivity, PortfolioActivity::class.java)
+            startActivity(intent)
         }
         //      recyclerView_home.setBackgroundColor(Color.BLUE);
 
@@ -61,7 +63,7 @@ class HomeActivity : AppCompatActivity()
         //       recyclerView_home.adapter = MainAdapter()
 
 
-        val db = CurrencyDatabase(this)
+        val db = PortfolioDatabase(this)
 
 
         populateDatabase(db)
@@ -85,7 +87,7 @@ class HomeActivity : AppCompatActivity()
                 val body = response?.body?.string()
                 val gson = GsonBuilder().create()
 
-                val homeFeed = gson.fromJson(body, Homefeed::class.java)
+                val homeFeed = gson.fromJson(body, Currencies::class.java)
                 data = homeFeed?.data as MutableList<Data>
 
 

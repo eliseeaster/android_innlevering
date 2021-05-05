@@ -3,14 +3,10 @@ package no.kristiania.android_innlevering.data
 import androidx.room.*
 
 @Dao
-interface CurrenciesDao {
-
-
-
-    //DEMS FUNKSJONER
+interface PortfolioDao {
 
     @Update
-    fun updateCurrencies(currencies: Currencies)
+    fun updateCurrencies(portfolio: Portfolio)
 
     @Query("SELECT count(*)!=0 FROM currency_table WHERE currency_symbol = :currencySymbol ")
     fun currencyExists(currencySymbol: String): Boolean
@@ -19,10 +15,10 @@ interface CurrenciesDao {
     fun getVolume(currencySymbol: String): Double
 
     @Query("SELECT * FROM currency_table WHERE currency_symbol!=(SELECT currency_symbol FROM currency_table WHERE currency_symbol =:currencySymbol)")
-    fun getAllCurrencies(currencySymbol: String): MutableList<Currencies>
+    fun getAllCurrencies(currencySymbol: String): MutableList<Portfolio>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun addCurrencies(currencies: Currencies)
+    fun addCurrencies(portfolio: Portfolio)
 
     @Query("SELECT count(*)!=0 FROM currency_table WHERE currency_symbol = :currencySymbol ")
     fun isCurrencyExistAlready(currencySymbol: String): Boolean

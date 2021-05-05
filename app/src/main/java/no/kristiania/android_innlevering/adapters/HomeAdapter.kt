@@ -9,11 +9,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import no.kristiania.android_innlevering.data.Homefeed
-import no.kristiania.android_innlevering.R
+import no.kristiania.android_innlevering.data.Currencies
 import no.kristiania.android_innlevering.data.Data
 
-class HomeAdapter(private val context: Context, private val homeFeed: Homefeed, private val clickListener: (Data) -> Unit):
+class HomeAdapter(private val context: Context, private val homeFeed: Currencies, private val clickListener: (Data) -> Unit):
     RecyclerView.Adapter<CustomViewHolder>(){
     lateinit var data: Data
 
