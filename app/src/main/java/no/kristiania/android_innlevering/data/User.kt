@@ -5,9 +5,14 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 
-@Entity(tableName = "user")
-data class User(
-    @PrimaryKey val uid: Int,
-    @ColumnInfo(name = "user_points") val userPoints: Int?,
-    @ColumnInfo(name = "user_owned_currency") val userOwnedCurrencies: String?
+@Entity(tableName = "currency_table")
+data class Currencies(
+    @PrimaryKey
+    @ColumnInfo(name = "currency_symbol") val symbol: String,
+
+    @ColumnInfo(name = "currency_volume") val volume: Double,
+
+    @ColumnInfo(name = "currency_price") val priceUsd: Double
+
+
 )

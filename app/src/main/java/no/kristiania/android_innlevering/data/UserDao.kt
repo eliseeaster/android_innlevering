@@ -1,21 +1,41 @@
 package no.kristiania.android_innlevering.data
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
-interface UserDao {
-    @Query("SELECT * FROM user")
+interface CurrenciesDao {
+
+
+
+    //DEMS FUNKSJONER
+
+    @Update
+    fun updateCurrencies(currencies: Currencies)
+
+    @Query("SELECT count(*)!=0 FROM currency_table WHERE currency_symbol = :currencySymbol ")
+    fun currencyExists(currencySymbol: String): Boolean
+
+    @Query("SELECT currency_volume FROM currency_table WHERE currency_symbol = :currencySymbol")
+    fun getVolume(currencySymbol: String): Double
+
+    @Query("SELECT * FROM currency_table WHERE currency_symbol!=(SELECT currency_symbol FROM currency_table WHERE currency_symbol =:currencySymbol)")
+    fun getAllCurrencies(currencySymbol: String): MutableList<Currencies>
+
+
+
+    /*
+
+    VÅRE GAMLE EKSEMPEL-FUNKSJONER
+
+    @Query("SELECT * FROM currency_table")
     fun getAll(): List<User>
 
-    @Query("SELECT * FROM user where uid = :uid ")
-    fun getOne(uid: Int): User
+    @Query("SELECT * FROM currency_table where uid = :uid ")
+    fun getOne(uid: Int): Currencies
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun addUser(user: User)
+    fun addUser(user: Currencies)
 
-    @Query("DELETE FROM user where uid = :uid")
-    fun delete(uid: Int)
+    @Query("DELETE FROM currency_table where uid = :uid")
+    fun delete(uid: Int)*/
 }
