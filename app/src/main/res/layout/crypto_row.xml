@@ -8,14 +8,14 @@
 
 
     <TextView
-        android:id="@+id/textView_video_title"
+        android:id="@+id/textView_crypto_title"
         android:layout_width="100dp"
         android:layout_height="18dp"
         app:layout_constraintStart_toEndOf="@+id/textView_icon"
         tools:layout_editor_absoluteY="48dp" />
 
     <ImageView
-        android:id="@+id/textView_icon"
+        android:id="@+id/textView_crypto_icon"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="16dp"
@@ -29,7 +29,7 @@
         app:srcCompat="@drawable/ic_android" />
 
     <TextView
-        android:id="@+id/textView_symbol"
+        android:id="@+id/textView_crypto_symbol"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="A"
@@ -37,15 +37,15 @@
         app:layout_constraintTop_toBottomOf="@+id/textView_video_title" />
 
     <TextView
-        android:id="@+id/textView_value"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/textView_crypto_value"
+        android:layout_width="76dp"
+        android:layout_height="21dp"
         android:text="B"
         app:layout_constraintStart_toEndOf="@+id/textView_video_title"
-        tools:layout_editor_absoluteY="52dp" />
+        tools:layout_editor_absoluteY="48dp" />
 
     <TextView
-        android:id="@+id/textView_percentage"
+        android:id="@+id/textView_crypto_percentage"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
