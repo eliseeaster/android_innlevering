@@ -11,16 +11,23 @@ import no.kristiania.android_innlevering.data.Currencies
 import no.kristiania.android_innlevering.data.CurrencyDatabase
 import no.kristiania.android_innlevering.data.Homefeed
 import no.kristiania.android_innlevering.HomeAdapter
+import no.kristiania.android_innlevering.data.Data
 import okhttp3.*
 import java.io.IOException
 import java.util.*
 
 
 class HomeActivity : AppCompatActivity()
+
 {
     private var currencies = mutableListOf<Currencies>()
 
+    companion object {
+        var data = mutableListOf<Data>()
+    }
+
     fun getAll(db: CurrencyDatabase){
+
         Thread {
             val allCurrencies = db.CurrenciesDao().getAllCurrencies("BTC")
             allCurrencies.forEach(){
@@ -60,9 +67,6 @@ class HomeActivity : AppCompatActivity()
         populateDatabase(db)
         fetchJson()
         println("\n\n--------------ALL USERS IN DB-------------- \n\n")
-        println("\n\n--------------ALL USERS IN DB-------------- \n\n")
-        println("\n\n--------------ALL USERS IN DB-------------- \n\n")
-        println("\n\n--------------ALL USERS IN DB-------------- \n\n")
         getAll(db)
         currencies.forEach{
             println("user outside of thread: $it")
@@ -82,17 +86,42 @@ class HomeActivity : AppCompatActivity()
                 val gson = GsonBuilder().create()
 
                 val homeFeed = gson.fromJson(body, Homefeed::class.java)
+                data = homeFeed?.data as MutableList<Data>
 
-                runOnUiThread{
-                    recyclerView_home.adapter = HomeAdapter(homeFeed)
-                    println(homeFeed)
+
+                data.forEach{
+                    println("name: ${it.name}")
+                    println("symbol: ${it.symbol}")
+                    println("priceUsd: ${it.priceUsd}")
+                    println("id: ${it.id}")
+
+                }
+
+
+                runOnUiThread(){
+
+                    recyclerView_home.adapter = HomeAdapter(this@HomeActivity, homeFeed) {
+                        val intent = Intent(this@HomeActivity, CCInfoActivity::class.java)
+                        intent.putExtra("name", it.name)
+                        intent.putExtra("symbol", it.symbol)
+                        intent.putExtra("id", it.id)
+                        intent.putExtra(
+                            "priceUsd",
+                            it.priceUsd?.toDouble()?.toBigDecimal().toString()
+                        )
+
+
+
+                        startActivity(intent)
+
+
+                    }
                 }
             }
+
             override fun onFailure(call: Call, e: IOException) {
                 println("Failed")
             }
         })
     }
 }
-
-

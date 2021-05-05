@@ -71,6 +71,8 @@ class CCInfoActivity() : AppCompatActivity() {
         }.start()
     }
 
+
+
     override fun onResume(){
         super.onResume()
         getDataFromDb(symbol)
