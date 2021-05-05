@@ -7,32 +7,36 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_home.*
-import no.kristiania.android_innlevering.data.User
-import no.kristiania.android_innlevering.data.UserDatabase
+import no.kristiania.android_innlevering.data.Currencies
+import no.kristiania.android_innlevering.data.CurrencyDatabase
 import okhttp3.*
 import java.io.IOException
+import java.util.*
 
 
 class HomeActivity : AppCompatActivity()
 {
-    private var users = mutableListOf<User>()
+    private var currencies = mutableListOf<Currencies>()
+    private lateinit var binding: ActivityHomeBinding
+    private var priceData = HashMap<String, Double>()
+    private var currenciesList = mutableListOf<Currency>()
+    private var availableUSD: Double = 0.0
+    private var totalCurrencies: Double = 0.0
 
-    fun getAll(db: UserDatabase){
+    fun getAll(db: CurrencyDatabase){
         Thread {
-            val allUsers = db.userDao().getAll()
-            allUsers.forEach(){
-                users.add(it)
+            val allCurrencies = db.CurrenciesDao().getAll()
+            allCurrencies.forEach(){
+                currencies.add(it)
             }
         }.start()
         Thread.sleep(100)
     }
 
-    fun populateDatabase(db: UserDatabase){
-        val user = User(1, 0, "Bitcoin")
-        val user2 = User(2, 50, "Dogecoin")
+    fun populateDatabase(db: CurrencyDatabase){
+        val currency1 = Currencies("", 1, "2")
         Thread {
-            db.userDao().addUser(user)
-            db.userDao().addUser(user2)
+            db.CurrenciesDao().addCurrency(currency)
         }.start()
         Thread.sleep(100)
     }
@@ -50,14 +54,14 @@ class HomeActivity : AppCompatActivity()
 
         recyclerView_home.layoutManager = LinearLayoutManager(this)
 
-        val db = UserDatabase(this)
+        val db = CurrencyDatabase(this)
 
 
         populateDatabase(db)
         fetchJson()
         println("\n\n--------------ALL USERS IN DB-------------- \n\n")
         getAll(db)
-        users.forEach{
+        currencies.forEach{
             println("user outside of thread: $it")
         }
     }
