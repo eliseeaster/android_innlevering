@@ -42,9 +42,9 @@ class PortfolioActivity : AppCompatActivity() {
 
 
         // TRANSACTION-BUTTON (GOES TO PAGE 7)
-        val btn_click_me = findViewById(R.id.btn_transactions) as Button
+        val btn_transactions = findViewById(R.id.btn_transactions) as Button
         // set on-click listener
-        btn_click_me.setOnClickListener {
+        btn_transactions.setOnClickListener {
             val intent = Intent(this@PortfolioActivity, TransactionsActivity::class.java)
             startActivity(intent)
         }

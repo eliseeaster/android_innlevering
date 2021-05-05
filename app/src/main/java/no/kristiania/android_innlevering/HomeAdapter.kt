@@ -54,11 +54,10 @@ class CustomViewHolder(val view: View, var data: Data? = null): RecyclerView.Vie
             view.context.startActivity(intent)
         }
         }
-    //
 
-    // USER-POINTS-BUTTON (GOES TO PAGE XX)
-    //val btn_user_points = findViewById(R.id.btn_user_points) as Button
-    // set on-click listener
+
+    /* USER-POINTS-BUTTON (GOES TO PAGE XX)*/
+
 /*
     init {
         btn_user_points.setOnClickListener {

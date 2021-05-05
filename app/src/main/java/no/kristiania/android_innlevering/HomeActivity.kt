@@ -1,6 +1,8 @@
 package no.kristiania.android_innlevering
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
@@ -39,11 +41,14 @@ class HomeActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        //      recyclerView_home.setBackgroundColor(Color.BLUE);
+        //USER POINTS BTN - LEADS TO PORTFOLIO
+        val btn_user_points = findViewById(R.id.btn_user_points) as Button
+        btn_user_points.setOnClickListener{
+            val intent = Intent(this@HomeActivity, PortfolioActivity::class.java)
+            startActivity(intent);
+        }
 
         recyclerView_home.layoutManager = LinearLayoutManager(this)
-        //       recyclerView_home.adapter = MainAdapter()
-
 
         val db = UserDatabase(this)
 
