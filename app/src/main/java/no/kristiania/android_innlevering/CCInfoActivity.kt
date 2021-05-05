@@ -4,8 +4,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_ccinfo.*
 import kotlinx.android.synthetic.main.activity_ccinfo.view.*
 import kotlinx.android.synthetic.main.crypto_row.view.*
 import no.kristiania.android_innlevering.data.CurrencyDatabase
@@ -42,13 +44,23 @@ class CCInfoActivity() : AppCompatActivity() {
         symbol = receivedIntent.getStringExtra("symbol").toString()
         priceUsd = receivedIntent.getStringExtra("priceUsd").toString()
         id = receivedIntent.getStringExtra("id").toString()
+        Picasso.get().load("https://static.coincap.io/assets/icons/${symbol.toLowerCase()}@2x.png")
+            .into(crypto_img)
+
+               
 
         getDataFromDb(symbol)
 
         Thread.sleep(100)
 
-        val textView: TextView = findViewById(R.id.crypto_name) as TextView
-        textView.text = name;
+        val textView_name: TextView = findViewById(R.id.crypto_name) as TextView
+        textView_name.text = name;
+
+        val textView_amount: TextView = findViewById(R.id.crypto_amount) as TextView
+        textView_amount.text = priceUsd;
+
+        val image: ImageView = findViewById(R.id.crypto_img) as ImageView
+        image
 
         val btn_start_buy = findViewById(R.id.buy_btn) as Button
         btn_start_buy.setOnClickListener{
