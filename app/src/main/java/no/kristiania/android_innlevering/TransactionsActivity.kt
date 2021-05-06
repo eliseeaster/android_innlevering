@@ -14,6 +14,8 @@ This screen shows the list of all buying and selling transactions executed by th
 These transactions were stored in the database table when the user clicked the buy and sell buttons on screen 5 and screen 6 respectively.
 Note: This screen will also show installation reward transaction.
 */
+
+//!! HVA KJØRES UT HER?
 class TransactionsActivity : AppCompatActivity() {
 
     var transactionsList = mutableListOf<Transactions>()

@@ -40,7 +40,7 @@ class HomeActivity : AppCompatActivity() {
         Thread.sleep(100)
     }
 
-
+/*
     //POPULER DB MED 10.000 SOM I DEMS BUY
     fun populateDatabase(db: PortfolioDatabase) {
         val currency1 = Portfolio("BTC", 0.1, 1.4)
@@ -50,7 +50,7 @@ class HomeActivity : AppCompatActivity() {
             db.PortfolioDao().addCurrencies(currency2)
         }.start()
         Thread.sleep(100)
-    }
+    }*/
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

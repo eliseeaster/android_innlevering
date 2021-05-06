@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,30 +14,48 @@ import kotlinx.android.synthetic.main.activity_portfolio.*
 import kotlinx.android.synthetic.main.portfolio_row.*
 import kotlinx.android.synthetic.main.portfolio_row.view.*
 import kotlinx.android.synthetic.main.crypto_row.view.*
+import no.kristiania.android_innlevering.adapters.PortfolioAdapter
+import no.kristiania.android_innlevering.data.Currencies
+import no.kristiania.android_innlevering.data.Portfolio
+import no.kristiania.android_innlevering.data.PortfolioDatabase
 import okhttp3.*
 
 //SCREEN 3
 
 class PortfolioActivity : AppCompatActivity() {
 
+    private var currenciesList = mutableListOf<Portfolio>()
+    private var availableUSD: Double = 0.0
+    private var priceUsdData = HashMap<String, Double>()
+    private var totalCurrency: Double = 0.0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_portfolio)
 
-        rvPortfolio.layoutManager = LinearLayoutManager(this)
+        supportActionBar.apply { title = "Portfolio" }
 
+        val receivedIntent = intent
+        priceUsdData = receivedIntent.getSerializableExtra("map") as HashMap<String, Double>
 
-        //TRYING TO CHANGE THE VALUE-TXT...
-        val valueRecentRates = intent.getStringExtra("RECENT_RATES")
+        this.rvPortfolio.layoutManager = LinearLayoutManager(this)
 
-        if (valueRecentRates != null) {
-          rvPortfolio.adapter = PortfolioAdapter(valueRecentRates)
+        Thread.sleep(100)
+
+        getAllCurrenciesVolume()
+        getUsdVolume()
+
+        for (i in 0 until currenciesList.size) {
+            totalCurrency += (currenciesList[i].volume * currenciesList[i].priceUsd).round(4)
         }
 
+        totalCurrency += availableUSD
+        insertTotalCurrency(totalCurrency)
 
-        val textView5 = findViewById<TextView>(R.id.textView)
-        textView5.text = valueRecentRates
+        Thread.sleep(100)
 
+        btn_portfolio_user_points.text = "${totalCurrency.round(4)} USD$"
+        rvPortfolio.adapter = PortfolioAdapter(this@PortfolioActivity, currenciesList, priceUsdData)
 
 
         // TRANSACTION-BUTTON (GOES TO PAGE 7)
@@ -49,31 +66,30 @@ class PortfolioActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //fetchJSON()
-
-
     }
 
+    fun getAllCurrenciesVolume() {
 
-        private class PortfolioAdapter(val rates: String): RecyclerView.Adapter<PortfolioViewHolder>() {
-        //HOW MANY ITEMS IN OUR LIST
-        override fun getItemCount(): Int {
-            return 3
-        }
-        //WHAT THE VIEW LOOKS LIKE
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PortfolioViewHolder {
-                // how do we even create a view
+        Thread {
+            PortfolioDatabase(applicationContext).PortfolioDao().getAllCurrencies("USD")
+                .forEach(){
+                    currenciesList.add(it)
+                }
+        }.start()
+    }
 
-            val layoutInflater = LayoutInflater.from(parent.context)
-            val customView = layoutInflater.inflate(R.layout.portfolio_row, parent, false)
-            return PortfolioViewHolder(customView)
-        }
+    private fun getUsdVolume() {
+        Thread {
+            availableUSD = PortfolioDatabase(applicationContext).PortfolioDao().getVolume("USD")
+        }.start()
+    }
 
-        override fun onBindViewHolder(holder: PortfolioViewHolder, position: Int) {
-            println(rates)
-            holder.customView.textView5?.text = rates
+    private fun insertTotalCurrency(totalCurrencies: Double) {
+        Thread {
+            PortfolioDatabase(applicationContext).PortfolioDao().insertCurrencies(Portfolio("TOTAL", totalCurrencies, 1.0))
         }
     }
+
 
     private class PortfolioViewHolder(val customView: View): RecyclerView.ViewHolder(customView) {
 
