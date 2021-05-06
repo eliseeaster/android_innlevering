@@ -22,8 +22,6 @@ import okhttp3.*
 
 //SCREEN 3
 
-//!!!!!SPØR ELIAS!!!!!!!!! HVA SKJER HER? HVORFOR ER TRANSACTIONS BLANK? HVA HENTER TRANSACTIONS?
-
 class PortfolioActivity : AppCompatActivity() {
 
     private var currenciesList = mutableListOf<Portfolio>()
@@ -60,7 +58,6 @@ class PortfolioActivity : AppCompatActivity() {
 
         // TRANSACTION-BUTTON (GOES TO PAGE 7)
         val btn_transactions = findViewById(R.id.btn_transactions) as Button
-        // set on-click listener
         btn_transactions.setOnClickListener {
             val intent = Intent(this@PortfolioActivity, TransactionsActivity::class.java)
             startActivity(intent)

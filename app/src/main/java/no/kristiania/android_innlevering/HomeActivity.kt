@@ -4,18 +4,23 @@ import android.content.Intent
 import android.os.Bundle
 import android.provider.Contacts
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_home.*
 import no.kristiania.android_innlevering.data.*
 import no.kristiania.android_innlevering.utils.Extentions
+import no.kristiania.android_innlevering.utils.LocalPreferences
 import okhttp3.*
 import java.io.IOException
+import java.lang.Thread.sleep
 import java.util.*
 
 
 class HomeActivity : AppCompatActivity() {
+
+    private var loggedIn: Boolean = false
 
     private var priceUsdData = HashMap<String, Double>()
     private var currenciesList = mutableListOf<Portfolio>()
@@ -65,21 +70,34 @@ class HomeActivity : AppCompatActivity() {
 
         supportActionBar.apply { title = "Home" }
 
+
+        if (LocalPreferences.getInstance(this).getSaveStringValue("loggedIn") != null) {
+            loggedIn = LocalPreferences.getInstance(this).getSaveStringValue("loggedIn")!!.toBoolean()
+        }
+
         btn_user_points.text = "10000.00$"
 
-        Thread {
-            PortfolioDatabase(applicationContext).PortfolioDao()
-                .insertCurrencies(Portfolio("USD", 10000.00, 1.0))
+        if(!loggedIn) {
+            Thread {
+                PortfolioDatabase(applicationContext).PortfolioDao()
+                    .insertCurrencies(Portfolio("USD", 10000.00, 1.0))
 
-            PortfolioDatabase(applicationContext).getTransactionsDao().insertTransactions(
-                Transactions(
-                    "USD",
-                    "Download Price",
-                    "10000.00 $",
-                    Extentions.dateTime(Date().time, "dd-MM-YYY HH:mm:ss")
+                PortfolioDatabase(applicationContext).getTransactionsDao().insertTransactions(
+                    Transactions(
+                        "USD",
+                        Extentions.dateTime(Date().time, "dd-MM-YYY HH:mm:ss"),
+                        "Welcome Bonus",
+                        "10000.00$"
+
+                    )
                 )
-            )
-        }.start()
+            }.start()
+            sleep(100)
+            LocalPreferences.getInstance(this).saveStringValue("loggedIn", "true")
+            println("performed login")
+        } else{
+            Toast.makeText(this, "Welcome back!", Toast.LENGTH_SHORT).show()
+        }
 
         recyclerView_home.layoutManager = LinearLayoutManager(this)
 

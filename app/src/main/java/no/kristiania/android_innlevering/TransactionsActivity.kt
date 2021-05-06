@@ -15,7 +15,6 @@ These transactions were stored in the database table when the user clicked the b
 Note: This screen will also show installation reward transaction.
 */
 
-//!! HVA KJØRES UT HER?
 class TransactionsActivity : AppCompatActivity() {
 
     var transactionsList = mutableListOf<Transactions>()

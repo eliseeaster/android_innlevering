@@ -41,7 +41,7 @@ class SellCCActivity : AppCompatActivity() {
         Picasso.get().load("https://static.coincap.io/assets/icons/${symbol.toLowerCase()}@2x.png")
             .into(imageView2)
 
-        //getDataFromDb(symbol)
+        //getDataFromDatabase
 
         Thread.sleep(100)
 
