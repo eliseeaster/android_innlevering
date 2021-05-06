@@ -56,18 +56,21 @@ class CCInfoActivity() : AppCompatActivity() {
         //Trying to get the data to replace the value the layout
         val cryptoTitle: TextView = findViewById<TextView>(R.id.crypto_title)
         cryptoTitle.text = name;
-
         val cryptoAmount: TextView = findViewById<TextView>(R.id.crypto_amount)
         cryptoAmount.text = priceUsd;
 
-
+//GOING TO THE BUY PAGE, WITH API VALUES
         val btn_start_buy = findViewById<Button>(R.id.buy_btn)
         btn_start_buy.setOnClickListener{
             val intent = Intent(this@CCInfoActivity, BuyCCActivity::class.java)
+            intent.putExtra("name", name)
+            intent.putExtra("symbol", symbol)
+            intent.putExtra("priceUsd", priceUsd.toDouble().toBigDecimal().toString())
             startActivity(intent)
         }
 
 
+        //GOING TO THE SELL PAGE, WITH API VALUES
         val btn_start_sell = findViewById<Button>(R.id.sell_btn)
         btn_start_sell.setOnClickListener{
             val intent = Intent(this@CCInfoActivity, SellCCActivity::class.java)

@@ -16,7 +16,7 @@ class HomeAdapter(private val context: Context, private val homeFeed: Currencies
     RecyclerView.Adapter<CustomViewHolder>(){
     lateinit var data: Data
 
-    //numberOfItem
+    //number of items
     override fun getItemCount(): Int {
         return homeFeed.data.count()
     }
