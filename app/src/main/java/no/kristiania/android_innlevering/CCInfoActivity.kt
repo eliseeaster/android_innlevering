@@ -44,22 +44,20 @@ class CCInfoActivity() : AppCompatActivity() {
         id = receivedIntent.getStringExtra("id").toString()
         symbol = receivedIntent.getStringExtra("symbol").toString()
 
-        //Gets icon from database
         Picasso.get().load("https://static.coincap.io/assets/icons/${symbol.toLowerCase()}@2x.png")
             .into(crypto_img)
 
         getDataFromDb(symbol)
 
-        //Making sure we get to fetch the data from db
+        //MAKING SURE WE GET DATA FROM DATABASE
         Thread.sleep(100)
 
-        //Trying to get the data to replace the value the layout
         val cryptoTitle: TextView = findViewById<TextView>(R.id.crypto_title)
         cryptoTitle.text = name;
         val cryptoAmount: TextView = findViewById<TextView>(R.id.crypto_amount)
         cryptoAmount.text = priceUsd;
 
-//GOING TO THE BUY PAGE, WITH API VALUES
+        //GOING TO THE BUY PAGE, WITH API VALUES
         val btn_start_buy = findViewById<Button>(R.id.buy_btn)
         btn_start_buy.setOnClickListener{
             val intent = Intent(this@CCInfoActivity, BuyCCActivity::class.java)

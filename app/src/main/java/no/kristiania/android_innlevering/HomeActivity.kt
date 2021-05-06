@@ -45,18 +45,6 @@ class HomeActivity : AppCompatActivity() {
         Thread.sleep(100)
     }
 
-/*
-    //POPULER DB MED 10.000 SOM I DEMS BUY
-    fun populateDatabase(db: PortfolioDatabase) {
-        val currency1 = Portfolio("BTC", 0.1, 1.4)
-        val currency2 = Portfolio("Etherium", 50.2, 4.2)
-        Thread {
-            db.PortfolioDao().addCurrencies(currency1)
-            db.PortfolioDao().addCurrencies(currency2)
-        }.start()
-        Thread.sleep(100)
-    }*/
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -121,19 +109,7 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-    /*
 
-        val db = PortfolioDatabase(this)
-
-
-        populateDatabase(db)
-        fetchJson()
-        println("\n\n--------------ALL USERS IN DB-------------- \n\n")
-        getAll(db)
-        currencies.forEach{
-            println("user outside of thread: $it")
-        }
-    }*/
 
     fun fetchJson() {
         val url =

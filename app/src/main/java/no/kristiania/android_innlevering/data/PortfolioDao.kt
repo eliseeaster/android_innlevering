@@ -26,20 +26,4 @@ interface PortfolioDao {
     @Query("SELECT count(*)!=0 FROM currency_table WHERE currency_symbol = :currencySymbol ")
     fun currencyAlreadyExist(currencySymbol: String): Boolean
 
-
-    /*
-
-    VÅRE GAMLE EKSEMPEL-FUNKSJONER
-
-    @Query("SELECT * FROM currency_table")
-    fun getAll(): List<User>
-
-    @Query("SELECT * FROM currency_table where uid = :uid ")
-    fun getOne(uid: Int): Currencies
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun addUser(user: Currencies)
-
-    @Query("DELETE FROM currency_table where uid = :uid")
-    fun delete(uid: Int)*/
 }

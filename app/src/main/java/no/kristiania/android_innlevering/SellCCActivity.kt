@@ -41,15 +41,17 @@ class SellCCActivity : AppCompatActivity() {
         Picasso.get().load("https://static.coincap.io/assets/icons/${symbol.toLowerCase()}@2x.png")
             .into(imageView2)
 
-        //getDataFromDatabase
 
         Thread.sleep(100)
+
+
 
         val textView_name: TextView = findViewById(R.id.textView7) as TextView
         textView_name.text = name;
 
         val textView_amount: TextView = findViewById(R.id.editTextNumber3) as TextView
         textView_amount.text = "${priceUsd}";
+
 
         getUsdVolume()
 

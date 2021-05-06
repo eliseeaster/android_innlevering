@@ -7,7 +7,7 @@
     >
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/crypto_sell"
         android:layout_width="79dp"
         android:layout_height="54dp"
         android:text="BTC"
@@ -141,17 +141,17 @@
         android:id="@+id/tv_your_saldo"
         android:layout_width="247dp"
         android:layout_height="99dp"
-        android:layout_marginBottom="92dp"
+        android:layout_marginTop="41dp"
         android:text="You can only sell cryptocurrensy in USD.
 
 You have (insert amount) USD"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.64"
+        app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sell_button"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.239"
         tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

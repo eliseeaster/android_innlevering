@@ -25,8 +25,10 @@
         android:id="@+id/rvPortfolio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="203dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_portfolio_user_points"
+        app:layout_constraintVertical_bias="0.0"
         tools:layout_editor_absoluteX="0dp" />
 
     <Button
