@@ -33,6 +33,12 @@ class HomeAdapter(private val context: Context, private val homeFeed: Currencies
     }
 }
 
+fun Double.round(decimals: Int): Double{
+    var multiplier = 1.0
+    repeat(decimals) {multiplier *= 10}
+    return kotlin.math.round(this*multiplier) / multiplier
+}
+
 class CustomViewHolder(val view: View): RecyclerView.ViewHolder(view) {
 
     private val name: TextView = view.findViewById(R.id.textView_crypto_title)

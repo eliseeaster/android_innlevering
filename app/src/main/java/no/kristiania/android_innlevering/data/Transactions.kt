@@ -8,19 +8,19 @@ import java.time.OffsetDateTime
 data class Transactions (
 
         @ColumnInfo(name = "currency_symbol")
-        val symbol: String,
+        var symbol: String,
 
         @ColumnInfo(name = "transactions_date")
-        val dateTime: String,
+        var dateTime: String,
 
         @ColumnInfo(name = "transactions_type")
-        val type: String,
+        var type: String,
 
         @ColumnInfo(name = "transactions_details")
-        val details: String
+        var details: String
 
 ) {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "transactions_id")
-    val id: Int = 0
+    var id: Int = 0
 }

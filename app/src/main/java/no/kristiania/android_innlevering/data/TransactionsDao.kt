@@ -7,7 +7,7 @@ interface TransactionsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertTransactions(transactions: Transactions)
 
-    @Query("SELECT * FROM transaction_table")
+    @Query("SELECT * FROM transactions_table")
     fun fetchTransactions(): MutableList<Transactions>
 
 }

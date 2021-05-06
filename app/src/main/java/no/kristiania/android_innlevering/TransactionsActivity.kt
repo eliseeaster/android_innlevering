@@ -2,6 +2,10 @@ package no.kristiania.android_innlevering
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.activity_transactions.*
+import no.kristiania.android_innlevering.adapters.TransactionsAdapter
+import no.kristiania.android_innlevering.data.PortfolioDatabase
 import no.kristiania.android_innlevering.data.Transactions
 
 //PAGE 7 - TRANSACTIONS
@@ -19,8 +23,22 @@ class TransactionsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transactions)
 
+    supportActionBar.apply {
+        title = "Transactions"
+    }
 
+        addData()
+        rv_history_transactions.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true)
+        rv_history_transactions.adapter = TransactionsAdapter(transactionsList)
 
+    }
 
+    fun addData() {
+        Thread {
+            PortfolioDatabase(applicationContext).getTransactionsDao().fetchTransactions()
+                .forEach(){
+                    transactionsList.add(it)
+                }
+        }.start()
     }
 }

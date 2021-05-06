@@ -4,9 +4,11 @@ import androidx.room.Database
 import androidx.room.Room.databaseBuilder
 import androidx.room.RoomDatabase
 
-@Database(entities = [Portfolio::class], version = 1, exportSchema = false)
+@Database(entities = [Portfolio::class, Transactions::class], version = 1, exportSchema = false)
 abstract class PortfolioDatabase : RoomDatabase() {
+
     abstract fun PortfolioDao(): PortfolioDao
+    abstract fun getTransactionsDao(): TransactionsDao
 
     companion object {
         @Volatile

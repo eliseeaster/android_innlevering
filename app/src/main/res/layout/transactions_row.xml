@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/transactions_img"
         android:layout_width="95dp"
         android:layout_height="72dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -47,7 +47,7 @@
         android:id="@+id/tv_date_time"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="68dp"
         android:layout_marginEnd="236dp"
         android:text="Date/time"
         app:layout_constraintEnd_toEndOf="parent"

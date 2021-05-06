@@ -5,6 +5,9 @@ import androidx.room.*
 @Dao
 interface PortfolioDao {
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertCurrencies(portfolio: Portfolio)
+
     @Update
     fun updateCurrencies(portfolio: Portfolio)
 
