@@ -102,9 +102,10 @@ class BuyCCActivity : AppCompatActivity() {
                             .insertTransactions(
                                 Transactions(
                                     symbol,
-                                    "PURCHASED",
-                                    "$result $symbol for $inputUSDollar USD$",
-                                    dateTime
+                                    dateTime,
+                                    "Purchased",
+                                    "$result for $inputUSDollar USD$"
+
                                 )
                             )
 
@@ -134,9 +135,9 @@ class BuyCCActivity : AppCompatActivity() {
                             .insertTransactions(
                                 Transactions(
                                     symbol,
-                                    "PURCHASED",
-                                    "$result $symbol for $inputUSDollar USD$",
-                                    dateTime
+                                    dateTime,
+                                    "Purchased",
+                                    "$result for $inputUSDollar USD$"
                                 )
                             )
 
@@ -152,13 +153,12 @@ class BuyCCActivity : AppCompatActivity() {
                 }
                 Toast.makeText(
                     this@BuyCCActivity,
-                    "Your purchase was successfull. $result $symbol",
+                    "Your purchase was successful. $result $symbol",
                     Toast.LENGTH_LONG
                 ).show()
             }
         }
     }
-
 
     private fun getUsdVolume() {
         Thread {

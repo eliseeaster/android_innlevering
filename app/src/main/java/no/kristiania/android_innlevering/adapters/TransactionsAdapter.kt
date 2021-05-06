@@ -23,17 +23,15 @@ RecyclerView.Adapter<TransactionViewHolder>(){
 
         val listItem = transactionsList[position]
 
-//MAKES TEXT GREEN/RED BASED ON PURCHASETYPE
-        if (listItem.type == "PURCHASED") {
+    //MAKES TEXT GREEN/RED BASED ON PURCHASETYPE
+        if (listItem.type == "Purchased") {
             holder.itemView.findViewById<TextView>(R.id.tv_bought_sold).apply {
                 text = listItem.type
-                //setting blue color
-                setTextColor(Color.parseColor("##008000"))
+                setTextColor(Color.parseColor("#008000"))
             }
-        } else if (listItem.type == "SOLD" || listItem.type == "Installation Reward") {
+        } else if (listItem.type == "Sold" || listItem.type == "Welcome Bonus") {
             holder.itemView.findViewById<TextView>(R.id.tv_bought_sold).apply {
                 text = listItem.type
-                //setting red color
                 setTextColor(Color.parseColor("#ff0000"))
             }
         }
@@ -46,7 +44,6 @@ RecyclerView.Adapter<TransactionViewHolder>(){
             }
         } else {
 
-            //!!!!MIGHT REMOVE THIS???
             holder.itemView.findViewById<TextView>(R.id.tv_transaction_history_detail).text = listItem.details
         }
 
