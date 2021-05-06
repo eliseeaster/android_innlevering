@@ -40,31 +40,35 @@ class CCInfoActivity() : AppCompatActivity() {
 
         val receivedIntent = intent
         name = receivedIntent.getStringExtra("name").toString()
-        symbol = receivedIntent.getStringExtra("symbol").toString()
         priceUsd = receivedIntent.getStringExtra("priceUsd").toString()
         id = receivedIntent.getStringExtra("id").toString()
+        symbol = receivedIntent.getStringExtra("symbol").toString()
+
+        //Gets icon from database
         Picasso.get().load("https://static.coincap.io/assets/icons/${symbol.toLowerCase()}@2x.png")
             .into(crypto_img)
 
         getDataFromDb(symbol)
 
+        //Making sure we get to fetch the data from db
         Thread.sleep(100)
 
-        val textView_name: TextView = findViewById(R.id.crypto_name) as TextView
-        textView_name.text = name;
+        //Trying to get the data to replace the value the layout
+        val cryptoTitle: TextView = findViewById<TextView>(R.id.crypto_title)
+        cryptoTitle.text = name;
 
-        val textView_amount: TextView = findViewById(R.id.crypto_amount) as TextView
-        textView_amount.text = priceUsd;
+        val cryptoAmount: TextView = findViewById<TextView>(R.id.crypto_amount)
+        cryptoAmount.text = priceUsd;
 
 
-        val btn_start_buy = findViewById(R.id.buy_btn) as Button
+        val btn_start_buy = findViewById<Button>(R.id.buy_btn)
         btn_start_buy.setOnClickListener{
             val intent = Intent(this@CCInfoActivity, BuyCCActivity::class.java)
             startActivity(intent)
         }
 
 
-        val btn_start_sell = findViewById(R.id.sell_btn) as Button
+        val btn_start_sell = findViewById<Button>(R.id.sell_btn)
         btn_start_sell.setOnClickListener{
             val intent = Intent(this@CCInfoActivity, SellCCActivity::class.java)
             startActivity(intent)

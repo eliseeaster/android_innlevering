@@ -78,7 +78,7 @@ class BuyCCActivity : AppCompatActivity() {
             currencyAlreadyExist = PortfolioDatabase(applicationContext).PortfolioDao().currencyAlreadyExist(symbol)
         }.start()
     }
-
+/*
     private fun getUsdVolume() {
         Thread {
             availableUsd = PortfolioDatabase(applicationContext).get.getVolume("USD")
@@ -100,7 +100,7 @@ class BuyCCActivity : AppCompatActivity() {
         Thread {
             currencyAlreadyExist = PortfolioDatabase(applicationContext).getCurrencyDao().isCurrencyExistAlready(symbol)
         }.start()
+*
 
-
-    }
+    }*/
 }

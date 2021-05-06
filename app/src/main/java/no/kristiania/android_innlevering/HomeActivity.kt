@@ -57,10 +57,9 @@ class HomeActivity : AppCompatActivity()
             val intent = Intent(this@HomeActivity, PortfolioActivity::class.java)
             startActivity(intent)
         }
-        //      recyclerView_home.setBackgroundColor(Color.BLUE);
 
         recyclerView_home.layoutManager = LinearLayoutManager(this)
-        //       recyclerView_home.adapter = MainAdapter()
+
 
 
         val db = PortfolioDatabase(this)
