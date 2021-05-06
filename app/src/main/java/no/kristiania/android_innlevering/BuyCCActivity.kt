@@ -158,13 +158,7 @@ class BuyCCActivity : AppCompatActivity() {
             }
         }
     }
-    /*fun getDataFromDb(symbol: String, usdSymbol: String = "USD") {
-        Thread {
-            availableCurrency = PortfolioDatabase(applicationContext).PortfolioDao().getVolume(symbol)
-            availableUsd = PortfolioDatabase(applicationContext).PortfolioDao().getVolume(usdSymbol)
-            currencyAlreadyExist = PortfolioDatabase(applicationContext).PortfolioDao().currencyAlreadyExist(symbol)
-        }.start()
-    }*/
+
 
     private fun getUsdVolume() {
         Thread {

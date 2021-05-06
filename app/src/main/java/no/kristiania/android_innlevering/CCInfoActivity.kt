@@ -73,7 +73,7 @@ class CCInfoActivity() : AppCompatActivity() {
         //GOING TO THE SELL PAGE, WITH API VALUES
         val btn_start_sell = findViewById<Button>(R.id.sell_btn)
         btn_start_sell.setOnClickListener{
-            val intent = Intent(this@CCInfoActivity, BuyCCActivity::class.java)
+            val intent = Intent(this@CCInfoActivity, SellCCActivity::class.java)
             intent.putExtra("name", name)
             intent.putExtra("symbol", symbol)
             intent.putExtra("priceUsd", priceUsd.toDouble().toBigDecimal().toString())

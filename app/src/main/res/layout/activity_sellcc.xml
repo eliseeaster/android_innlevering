@@ -12,10 +12,15 @@
         android:layout_height="54dp"
         android:text="BTC"
         android:textSize="30sp"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="223dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.256"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.304" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
         android:layout_width="0dp"
         android:layout_height="104dp"
         android:background="#6A9363"
@@ -75,25 +80,34 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputEditText
+    <EditText
+        android:id="@+id/crypto_input"
         android:layout_width="106dp"
         android:layout_height="71dp"
         android:hint="0.0555"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="251dp"
-        tools:layout_editor_absoluteY="206dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3"
         tools:ignore="HardcodedText" />
 
-    <EditText
-        android:id="@+id/editTextNumberDecimal"
+    <TextView
+        android:id="@+id/usd_result"
         android:layout_width="106dp"
         android:layout_height="62dp"
         android:ems="10"
         android:hint="3000"
         android:inputType="numberDecimal"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="251dp"
-        tools:layout_editor_absoluteY="319dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/crypto_input"
+        app:layout_constraintVertical_bias="0.125"
         tools:ignore="HardcodedText" />
 
     <TextView
@@ -102,30 +116,42 @@
         android:layout_height="54dp"
         android:text="USD"
         android:textSize="30sp"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="327dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.256"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.471"
         tools:ignore="HardcodedText" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/sell_button"
         android:layout_width="111dp"
         android:layout_height="62dp"
-        android:text="Sell"
+        android:text="SELL"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.653"
         app:rippleColor="#FFFFFF"
-        tools:layout_editor_absoluteX="150dp"
-        tools:layout_editor_absoluteY="422dp"
         tools:ignore="HardcodedText" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/tv_your_saldo"
         android:layout_width="247dp"
         android:layout_height="99dp"
+        android:layout_marginBottom="92dp"
         android:text="You can only sell cryptocurrensy in USD.
 
 You have (insert amount) USD"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="71dp"
-        tools:layout_editor_absoluteY="551dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.64"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sell_button"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
