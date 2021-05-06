@@ -40,10 +40,11 @@ class PortfolioActivity : AppCompatActivity() {
 
         this.rvPortfolio.layoutManager = LinearLayoutManager(this)
 
-        Thread.sleep(100)
-
         getAllCurrenciesVolume()
         getUsdVolume()
+
+        Thread.sleep(100)
+
 
         for (i in 0 until currenciesList.size) {
             totalCurrency += (currenciesList[i].volume * currenciesList[i].priceUsd).round(4)
@@ -52,6 +53,7 @@ class PortfolioActivity : AppCompatActivity() {
         totalCurrency += availableUSD
         insertTotalCurrency(totalCurrency)
 
+        println(totalCurrency)
         btn_portfolio_user_points.text = "${totalCurrency.round(4)} USD$"
         rvPortfolio.adapter = PortfolioAdapter(this@PortfolioActivity, currenciesList, priceUsdData)
 
