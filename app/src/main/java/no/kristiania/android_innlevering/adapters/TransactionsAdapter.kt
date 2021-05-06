@@ -37,7 +37,7 @@ RecyclerView.Adapter<TransactionViewHolder>(){
         }
 
         //SETS STARTSUM TO 10.000$, MAKES TEXT GREEN
-        if (listItem.details == "10000.00 $") {
+        if (listItem.details == "10000.00$") {
             holder.itemView.findViewById<TextView>(R.id.tv_transaction_history_detail).apply {
                 text = listItem.details
                 setTextColor(Color.parseColor("#008000"))

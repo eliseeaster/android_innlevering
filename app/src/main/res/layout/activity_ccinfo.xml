@@ -10,7 +10,7 @@
         android:id="@+id/crypto_img"
         android:layout_width="101dp"
         android:layout_height="96dp"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="188dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -26,35 +26,58 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/sell_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.958"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/crypto_img"
-        app:layout_constraintTop_toBottomOf="@+id/textView13"
-        app:layout_constraintVertical_bias="0.547" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.439" />
 
     <TextView
         android:id="@+id/crypto_amount"
         android:layout_width="209dp"
         android:layout_height="33dp"
+        android:layout_marginStart="59dp"
         android:layout_marginTop="48dp"
-        android:layout_marginBottom="452dp"
-        android:text="Amount"
+        android:layout_marginBottom="33dp"
+        android:text="Value"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/crypto_result"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.384"
+        app:layout_constraintStart_toEndOf="@+id/crypto_img"
+        app:layout_constraintStart_toStartOf="@+id/crypto_img"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/crypto_result"
+        android:layout_width="209dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="48dp"
+        android:text="Result"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.781"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/crypto_img"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/crypto_name" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.403" />
 
     <TextView
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="208dp"
-        android:text="You have x amound of"
+        android:layout_marginStart="94dp"
+        android:layout_marginTop="224dp"
+        android:layout_marginBottom="33dp"
+        android:text="Volum"
         android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/crypto_amount"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.755"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.365"
+        app:layout_constraintStart_toEndOf="@+id/crypto_img"
+        app:layout_constraintStart_toStartOf="@+id/crypto_img"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
