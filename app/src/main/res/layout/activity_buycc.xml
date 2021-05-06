@@ -91,14 +91,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
-    <EditText
+    <TextView
         android:id="@+id/inputCrypto"
         android:layout_width="106dp"
         android:layout_height="62dp"
         android:layout_marginEnd="72dp"
         android:ems="10"
         android:hint="0.0555"
-        android:inputType="numberDecimal"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/buy_btn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -120,20 +119,32 @@
         tools:ignore="HardcodedText" />
 
     <Button
-        android:id="@+id/buy_btn"
+        android:id="@+id/buy_button"
         android:layout_width="111dp"
         android:layout_height="62dp"
         android:text="BUY BUTTON"
-        app:layout_constraintBottom_toTopOf="@+id/textView10"
-        tools:layout_editor_absoluteX="150dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        app:layout_constraintVertical_bias="0.868" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="247dp"
         android:layout_height="99dp"
-        android:text="You can only buy cryptocurrensy in USD.
-
-You have (insert amount) USD dollars"
+        android:layout_marginBottom="116dp"
+        android:text="You can only buy cryptocurrensy in USD."
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/tv_your_saldo"
+        android:layout_width="247dp"
+        android:layout_height="99dp"
+        android:layout_marginBottom="116dp"
+        android:text="You have (insert amount) USD dollars"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

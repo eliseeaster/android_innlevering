@@ -22,6 +22,8 @@ import okhttp3.*
 
 //SCREEN 3
 
+//!!!!!SPØR ELIAS!!!!!!!!! HVA SKJER HER? HVORFOR ER TRANSACTIONS BLANK? HVA HENTER TRANSACTIONS?
+
 class PortfolioActivity : AppCompatActivity() {
 
     private var currenciesList = mutableListOf<Portfolio>()
@@ -51,8 +53,6 @@ class PortfolioActivity : AppCompatActivity() {
 
         totalCurrency += availableUSD
         insertTotalCurrency(totalCurrency)
-
-        Thread.sleep(100)
 
         btn_portfolio_user_points.text = "${totalCurrency.round(4)} USD$"
         rvPortfolio.adapter = PortfolioAdapter(this@PortfolioActivity, currenciesList, priceUsdData)
