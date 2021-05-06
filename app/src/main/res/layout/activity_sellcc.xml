@@ -10,7 +10,7 @@
         android:id="@+id/crypto_sell"
         android:layout_width="79dp"
         android:layout_height="54dp"
-        android:text="BTC"
+        android:text="VALUE"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

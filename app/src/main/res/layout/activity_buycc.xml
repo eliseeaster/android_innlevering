@@ -10,7 +10,7 @@
         android:layout_width="79dp"
         android:layout_height="54dp"
         android:layout_marginStart="52dp"
-        android:text="BTC"
+        android:text="VALUE"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/textView10"
         app:layout_constraintStart_toStartOf="parent"
