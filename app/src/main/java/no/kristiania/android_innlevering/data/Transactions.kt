@@ -1,5 +1,4 @@
 package no.kristiania.android_innlevering.data;
-/*
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.ColumnInfo
@@ -12,7 +11,7 @@ data class Transactions (
         val symbol: String,
 
         @ColumnInfo(name = "transactions_date")
-        val dateTime: String
+        val dateTime: String,
 
         @ColumnInfo(name = "transactions_type")
         val type: String,
@@ -24,4 +23,4 @@ data class Transactions (
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "transactions_id")
     val id: Int = 0
-}*/
+}

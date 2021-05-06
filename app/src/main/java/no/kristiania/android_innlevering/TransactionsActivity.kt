@@ -2,7 +2,7 @@ package no.kristiania.android_innlevering
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
+import no.kristiania.android_innlevering.data.Transactions
 
 //PAGE 7 - TRANSACTIONS
 /*
@@ -11,11 +11,16 @@ These transactions were stored in the database table when the user clicked the b
 Note: This screen will also show installation reward transaction.
 */
 class TransactionsActivity : AppCompatActivity() {
-    private lateinit var binding: Fragment
+
+    var transactionsList = mutableListOf<Transactions>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_Android_innlevering)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transactions)
+
+
+
 
     }
 }
